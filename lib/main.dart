@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vegetablesapp/home_page.dart';
+import 'package:vegetablesapp/bottom_nav.dart';
 import 'package:vegetablesapp/ui/colors.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class VegetablesApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: background,
       ),
-      home: HomePage(),
+      home: MainNavigation(),
     );
   }
 }
