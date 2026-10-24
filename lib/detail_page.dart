@@ -56,7 +56,7 @@ class _DetailPageState extends State<DetailPage> {
               width: double.infinity,
               height: 300,
               decoration: const BoxDecoration(color: backsur),
-              child: widget.product.imageUrl.isNotEmpty
+              child: widget.product.imageUrl.startsWith('http')
                   ? Image.network(
                       widget.product.imageUrl,
                       fit: BoxFit.cover,

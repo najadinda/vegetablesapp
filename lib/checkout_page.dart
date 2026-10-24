@@ -259,13 +259,21 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: item.product.imageUrl.isNotEmpty
+                          child: item.product.imageUrl.startsWith('http')
                               ? Image.network(
                                   item.product.imageUrl,
                                   fit: BoxFit.cover,
-                                  errorBuilder: (ctx, err, stack) => const Icon(Icons.eco, color: primary, size: 24),
+                                  errorBuilder: (ctx, err, stack) => Image.asset(
+                                    item.product.imagePath,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 24),
+                                  ),
                                 )
-                              : const Icon(Icons.eco, color: primary, size: 24),
+                              : Image.asset(
+                                  item.product.imagePath,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 24),
+                                ),
                         ),
                       ),
                       const SizedBox(width: 12),

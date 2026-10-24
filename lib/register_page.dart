@@ -203,7 +203,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         _buildTextFormField(
                           controller: _emailController,
                           label: 'Alamat Email',
-                          hint: 'nama@email.com',
+                          hint: 'nama@gmail.com',
                           icon: Icons.email_outlined,
                           keyboardType: TextInputType.emailAddress,
                           validator: (val) {

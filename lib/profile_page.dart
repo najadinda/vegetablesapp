@@ -174,37 +174,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void _showHelpDialog() {
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Row(
-          children: [
-            Icon(Icons.support_agent, color: primary),
-            SizedBox(width: 10),
-            Text('Bantuan Petani & CS'),
-          ],
-        ),
-        content: const Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Sayur segar kami dipanen langsung setiap dini hari oleh petani mitra Jawa Tengah.'),
-            SizedBox(height: 12),
-            Text('🌱 WhatsApp CS Sayur: 0812-9876-5432\n🥬 Jam Operasional: 05:00 - 21:00 WIB\n📦 Garansi Sayur: Segar 100% atau ganti baru.'),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: const Text('Tutup', style: TextStyle(color: primary, fontWeight: FontWeight.bold)),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final user = AppState().currentUser;
@@ -590,41 +559,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   const SizedBox(height: 20),
-
-                  // 6. SECTION: AKUN & PUSAT BANTUAN
-                  _buildSectionHeader('Akun & Komunitas Petani'),
-                  Card(
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      side: BorderSide(color: Colors.grey.shade200),
-                    ),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          leading: const CircleAvatar(backgroundColor: Color(0xFFF1F6F0), child: Icon(Icons.manage_accounts_outlined, color: primary)),
-                          title: const Text('Edit Profil Lengkap', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                          subtitle: const Text('Nama, email, password, dan info kontak', style: TextStyle(fontSize: 12, color: Colors.black54)),
-                          trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const EditProfilePage()),
-                            ).then((_) => setState(() {}));
-                          },
-                        ),
-                        const Divider(height: 1, indent: 64),
-                        ListTile(
-                          leading: const CircleAvatar(backgroundColor: Color(0xFFF1F6F0), child: Icon(Icons.support_agent_outlined, color: primary)),
-                          title: const Text('Bantuan & CS Petani Lokal', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                          subtitle: const Text('Garansi kesegaran & kendala pengiriman sayur', style: TextStyle(fontSize: 12, color: Colors.black54)),
-                          trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey),
-                          onTap: _showHelpDialog,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 24),
 
                   // 7. TOMBOL LOGOUT ELEGAN
                   SizedBox(

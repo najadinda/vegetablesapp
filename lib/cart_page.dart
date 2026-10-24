@@ -406,11 +406,15 @@ class _CartPageState extends State<CartPage> {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: item.product.imageUrl.isNotEmpty
+              child: item.product.imageUrl.startsWith('http')
                   ? Image.network(
                       item.product.imageUrl,
                       fit: BoxFit.cover,
-                      errorBuilder: (ctx, err, stack) => const Icon(Icons.eco, color: primary, size: 28),
+                      errorBuilder: (ctx, err, stack) => Image.asset(
+                        item.product.imagePath,
+                        fit: BoxFit.cover,
+                        errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 28),
+                      ),
                     )
                   : Image.asset(
                       item.product.imagePath,

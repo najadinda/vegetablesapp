@@ -253,7 +253,7 @@ class _ProductPageState extends State<ProductPage> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(14),
-                      child: product.imageUrl.isNotEmpty
+                      child: product.imageUrl.startsWith('http')
                           ? Image.network(
                               product.imageUrl,
                               fit: BoxFit.cover,

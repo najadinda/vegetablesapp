@@ -143,39 +143,6 @@ class _LoginPageState extends State<LoginPage> {
                           size: 28,
                         ),
                       ),
-                      // Tombol Cepat Demo
-                      GestureDetector(
-                        onTap: () => _fillDemoAccount('naja@email.com', '123'),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.25),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.flash_on,
-                                color: Colors.amberAccent,
-                                size: 16,
-                              ),
-                              SizedBox(width: 4),
-                              Text(
-                                'Isi Akun Demo',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -232,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             labelText: 'Alamat Email',
-                            hintText: 'nama@email.com',
+                            hintText: 'nama@gmail.com',
                             prefixIcon: const Icon(
                               Icons.email_outlined,
                               color: primary,
@@ -440,7 +407,7 @@ class _LoginPageState extends State<LoginPage> {
                               32,
                               'Google',
                               () {
-                                _fillDemoAccount('naja@email.com', '123');
+                                _fillDemoAccount('naja@gmail.com', 'password');
                                 _handleLogin();
                               },
                             ),

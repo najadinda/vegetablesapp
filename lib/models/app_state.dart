@@ -20,7 +20,7 @@ class UserModel {
     required this.password,
     this.phone = '0812-3456-7890',
     this.address = 'Jl. Nakula Raya No. 10, Semarang',
-    this.profilePicture = '',
+    this.profilePicture = 'assets/images/stitch.jpg',
     this.membershipTier = 'Sahabat Sayur Emas 🌿',
     this.points = 350,
     this.joinDate = 'Januari 2024',
@@ -87,8 +87,8 @@ class AppState {
   List<UserModel> registeredUsers = [
     UserModel(
       name: 'Ayudhya Naja',
-      email: 'naja@email.com',
-      password: '123',
+      email: 'naja@gmail.com',
+      password: 'password',
       phone: '0812-3456-7890',
       address: 'Jl. Nakula Raya No. 10, Semarang',
       membershipTier: 'Sahabat Sayur Emas 🌿',

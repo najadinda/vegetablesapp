@@ -15,6 +15,7 @@ class VegetablesApp extends StatelessWidget {
       title: 'Vegetables App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Poppins',
         scaffoldBackgroundColor: background,
         primaryColor: primary,
         colorScheme: ColorScheme.fromSeed(seedColor: primary),

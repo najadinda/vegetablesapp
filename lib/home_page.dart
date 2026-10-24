@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                             style: const TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 18,
-                              fontWeight: FontWeight.w800,
+                              fontWeight: FontWeight.bold,
                               color: primary,
                             ),
                             maxLines: 1,
@@ -419,45 +419,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-
-              const SizedBox(height: 20),
-
-              // 6. TOMBOL BUKA KATALOG LENGKAP
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ProductPage()),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(16),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.storefront_outlined, color: primary, size: 20),
-                        SizedBox(width: 10),
-                        Text(
-                          'Lihat Semua Sayur di Halaman Katalog',
-                          style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 13),
-                        ),
-                        SizedBox(width: 6),
-                        Icon(Icons.arrow_forward, color: primary, size: 16),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 32),
             ],
           ),
         ),
@@ -506,7 +467,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(14),
-                      child: product.imageUrl.isNotEmpty
+                      child: product.imageUrl.startsWith('http')
                           ? Image.network(
                               product.imageUrl,
                               fit: BoxFit.cover,
