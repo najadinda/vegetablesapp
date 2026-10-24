@@ -6,14 +6,15 @@ import 'package:vegetablesapp/ui/colors.dart';
 import 'package:vegetablesapp/home_page.dart';
 
 class MainNavigation extends StatefulWidget {
-  const MainNavigation({super.key});
+  final int initialIndex;
+  const MainNavigation({super.key, this.initialIndex = 0});
 
   @override
   State<MainNavigation> createState() => _MainNavigationState();
 }
 
 class _MainNavigationState extends State<MainNavigation> {
-  int _currentIndex = 0;
+  late int _currentIndex;
 
   final List<Widget> _pages = [
     const HomePage(),
@@ -23,14 +24,28 @@ class _MainNavigationState extends State<MainNavigation> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.initialIndex;
+  }
+
+  @override
   Widget build(BuildContext context) {
     // Mendapatkan lebar layar untuk kalkulasi jarak geser animasi
     final screenWidth = MediaQuery.of(context).size.width;
     // Karena ada 4 menu, kita bagi layar menjadi 4 area yang sama besar
     final itemWidth = screenWidth / 4; 
 
-    return Scaffold(
-      body: _pages[_currentIndex],
+    return PopScope(
+      canPop: _currentIndex == 0,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        if (_currentIndex != 0) {
+          setState(() => _currentIndex = 0);
+        }
+      },
+      child: Scaffold(
+        body: _pages[_currentIndex],
       bottomNavigationBar: Container(
         height: 80,
         decoration: BoxDecoration(
@@ -74,7 +89,7 @@ class _MainNavigationState extends State<MainNavigation> {
           ],
         ),
       ),
-    );
+    ));
   }
 
   // Fungsi pembuat tombol ikon

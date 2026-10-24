@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vegetablesapp/history_page.dart';
+import 'package:vegetablesapp/bottom_nav.dart';
 import 'package:vegetablesapp/models/app_state.dart';
 import 'package:vegetablesapp/models/transaction.dart';
 import 'package:vegetablesapp/ui/colors.dart';
@@ -112,9 +112,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 label: const Text('Lihat Riwayat & Struk', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                 onPressed: () {
                   Navigator.pop(ctx);
-                  Navigator.pushReplacement(
+                  Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => const HistoryPage()),
+                    MaterialPageRoute(
+                      builder: (context) => const MainNavigation(initialIndex: 2),
+                    ),
+                    (route) => false,
                   );
                 },
               ),
@@ -123,7 +126,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
             TextButton(
               onPressed: () {
                 Navigator.pop(ctx);
-                Navigator.of(context).popUntil((route) => route.isFirst);
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MainNavigation(initialIndex: 0),
+                  ),
+                  (route) => false,
+                );
               },
               child: const Text('Kembali ke Beranda', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600)),
             ),

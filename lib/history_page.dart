@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vegetablesapp/bottom_nav.dart';
 import 'package:vegetablesapp/models/app_state.dart';
 import 'package:vegetablesapp/models/transaction.dart';
 import 'package:vegetablesapp/ui/colors.dart';
@@ -44,6 +45,23 @@ class _HistoryPageState extends State<HistoryPage> {
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 0, 16, 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Struk Digital Belanja',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: primary),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.close, color: Colors.grey, size: 22),
+                      onPressed: () => Navigator.pop(ctx),
+                      visualDensity: VisualDensity.compact,
+                    ),
+                  ],
                 ),
               ),
               Expanded(
@@ -303,13 +321,15 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget _buildDashedLine() {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
-        final boxWidth = constraints.constrainWidth();
+        final boxWidth = constraints.maxWidth.isFinite
+            ? constraints.maxWidth
+            : (MediaQuery.of(context).size.width - 88);
         const dashWidth = 5.0;
         const dashHeight = 1.0;
-        final dashCount = (boxWidth / (2 * dashWidth)).floor();
-        return Flex(
+        final rawCount = (boxWidth / (2 * dashWidth)).floor();
+        final dashCount = rawCount > 0 ? rawCount : 10;
+        return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          direction: Axis.horizontal,
           children: List.generate(dashCount, (_) {
             return const SizedBox(
               width: dashWidth,
@@ -327,14 +347,19 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget _buildReceiptRow(String label, String value, {bool isStatus = false, bool isGreen = false}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label, style: const TextStyle(fontSize: 12, color: Colors.black54)),
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: isStatus || isGreen ? FontWeight.bold : FontWeight.w500,
-            color: isGreen ? primary : (isStatus ? primary : Colors.black87),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            value,
+            textAlign: TextAlign.end,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: isStatus || isGreen ? FontWeight.bold : FontWeight.w500,
+              color: isGreen ? primary : (isStatus ? primary : Colors.black87),
+            ),
           ),
         ),
       ],
@@ -344,57 +369,81 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     final history = AppState().history;
+    final canPop = Navigator.canPop(context);
 
-    return Scaffold(
-      backgroundColor: Colors.grey.shade50,
-      appBar: AppBar(
-        title: const Text(
-          'Riwayat Pesanan Sayur',
-          style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 18),
+    return PopScope(
+      canPop: !canPop,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const MainNavigation(initialIndex: 0)),
+          (route) => false,
+        );
+      },
+      child: Scaffold(
+        backgroundColor: Colors.grey.shade50,
+        appBar: AppBar(
+          title: const Text(
+            'Riwayat Pesanan Sayur',
+            style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.white,
+          leading: canPop
+              ? IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_new, color: primary, size: 20),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MainNavigation(initialIndex: 0)),
+                      (route) => false,
+                    );
+                  },
+                )
+              : null,
         ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.white,
-      ),
-      body: history.isEmpty
-          ? Center(
-              child: Padding(
-                padding: const EdgeInsets.all(32),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        color: backsur.withOpacity(0.4),
-                        shape: BoxShape.circle,
+        body: history.isEmpty
+            ? Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          color: backsur.withOpacity(0.4),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Text('📜', style: TextStyle(fontSize: 60)),
                       ),
-                      child: const Text('📜', style: TextStyle(fontSize: 60)),
-                    ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'Belum Ada Riwayat Pesanan',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: primary),
-                    ),
-                    const SizedBox(height: 6),
-                    const Text(
-                      'Pesanan sayur segar Anda akan otomatis tercatat dan struk belanja dapat dicek di sini.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey, fontSize: 13),
-                    ),
-                  ],
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Belum Ada Riwayat Pesanan',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: primary),
+                      ),
+                      const SizedBox(height: 6),
+                      const Text(
+                        'Pesanan sayur segar Anda akan otomatis tercatat dan struk belanja dapat dicek di sini.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.grey, fontSize: 13),
+                      ),
+                    ],
+                  ),
                 ),
+              )
+            : ListView.builder(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+                physics: const BouncingScrollPhysics(),
+                itemCount: history.length,
+                itemBuilder: (context, index) {
+                  final order = history[index];
+                  return _buildOrderCard(order);
+                },
               ),
-            )
-          : ListView.builder(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
-              physics: const BouncingScrollPhysics(),
-              itemCount: history.length,
-              itemBuilder: (context, index) {
-                final order = history[index];
-                return _buildOrderCard(order);
-              },
-            ),
+      ),
     );
   }
 
@@ -426,6 +475,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
                         padding: const EdgeInsets.all(6),
@@ -442,15 +492,21 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: backsur.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      order.status,
-                      style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: primary),
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: backsur.withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        order.status,
+                        style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: primary),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.end,
+                      ),
                     ),
                   ),
                 ],
@@ -544,20 +600,25 @@ class _HistoryPageState extends State<HistoryPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Metode: ${order.paymentMethod}',
-                        style: const TextStyle(color: Colors.grey, fontSize: 11),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        _formatCurrency(order.totalAmount),
-                        style: const TextStyle(color: primary, fontWeight: FontWeight.w800, fontSize: 15),
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Metode: ${order.paymentMethod}',
+                          style: const TextStyle(color: Colors.grey, fontSize: 11),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          _formatCurrency(order.totalAmount),
+                          style: const TextStyle(color: primary, fontWeight: FontWeight.w800, fontSize: 15),
+                        ),
+                      ],
+                    ),
                   ),
+                  const SizedBox(width: 8),
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: primary,
