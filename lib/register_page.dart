@@ -15,7 +15,9 @@ class _RegisterPageState extends State<RegisterPage> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
-  final _addressController = TextEditingController(text: 'Semarang, Jawa Tengah');
+  final _addressController = TextEditingController(
+    text: 'Semarang, Jawa Tengah',
+  );
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
@@ -43,7 +45,9 @@ class _RegisterPageState extends State<RegisterPage> {
     if (!_agreeTerms) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Anda perlu menyetujui syarat & ketentuan belanja sayur segar.'),
+          content: Text(
+            'Anda perlu menyetujui syarat & ketentuan belanja sayur segar.',
+          ),
           backgroundColor: Colors.orange,
           behavior: SnackBarBehavior.floating,
         ),
@@ -65,7 +69,11 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               Icon(Icons.warning_amber_rounded, color: Colors.white),
               SizedBox(width: 10),
-              Expanded(child: Text('Email ini sudah terdaftar. Silakan login atau gunakan email lain.')),
+              Expanded(
+                child: Text(
+                  'Email ini sudah terdaftar. Silakan login atau gunakan email lain.',
+                ),
+              ),
             ],
           ),
           backgroundColor: Colors.red.shade600,
@@ -106,14 +114,18 @@ class _RegisterPageState extends State<RegisterPage> {
               const Icon(Icons.celebration, color: Colors.white),
               const SizedBox(width: 10),
               Expanded(
-                child: Text('Pendaftaran berhasil! Selamat datang, ${newUser.name}! (+100 Poin Sayur 🎉)'),
+                child: Text(
+                  'Pendaftaran berhasil! Selamat datang, ${newUser.name}! (+100 Poin Sayur 🎉)',
+                ),
               ),
             ],
           ),
           backgroundColor: primary,
           behavior: SnackBarBehavior.floating,
           duration: const Duration(seconds: 3),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
         ),
       );
 
@@ -140,10 +152,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 20),
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.white,
+                      size: 20,
+                    ),
                     style: IconButton.styleFrom(
                       backgroundColor: Colors.white.withOpacity(0.2),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -152,7 +170,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Text(
                         'Daftar Akun Baru',
-                        style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Text(
                         'Bergabung dengan komunitas Sayur Segar',
@@ -181,7 +203,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       children: [
                         const Text(
                           'Informasi Diri',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: primary),
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: primary,
+                          ),
                         ),
                         const SizedBox(height: 18),
 
@@ -252,10 +278,14 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscureText: _obscurePassword,
                           suffixIcon: IconButton(
                             icon: Icon(
-                              _obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                              _obscurePassword
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
                               color: Colors.grey,
                             ),
-                            onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                            onPressed: () => setState(
+                              () => _obscurePassword = !_obscurePassword,
+                            ),
                           ),
                           validator: (val) {
                             if (val == null || val.isEmpty) return 'Kata sandi tidak boleh kosong';
@@ -274,10 +304,15 @@ class _RegisterPageState extends State<RegisterPage> {
                           obscureText: _obscureConfirmPassword,
                           suffixIcon: IconButton(
                             icon: Icon(
-                              _obscureConfirmPassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                              _obscureConfirmPassword
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
                               color: Colors.grey,
                             ),
-                            onPressed: () => setState(() => _obscureConfirmPassword = !_obscureConfirmPassword),
+                            onPressed: () => setState(
+                              () => _obscureConfirmPassword =
+                                  !_obscureConfirmPassword,
+                            ),
                           ),
                           validator: (val) {
                             if (val == null || val.isEmpty) return 'Konfirmasi kata sandi tidak boleh kosong';
@@ -294,14 +329,18 @@ class _RegisterPageState extends State<RegisterPage> {
                             Checkbox(
                               value: _agreeTerms,
                               activeColor: primary,
-                              onChanged: (val) => setState(() => _agreeTerms = val ?? false),
+                              onChanged: (val) =>
+                                  setState(() => _agreeTerms = val ?? false),
                             ),
                             const Expanded(
                               child: Padding(
                                 padding: EdgeInsets.only(top: 12),
                                 child: Text(
                                   'Saya menyetujui Ketentuan Layanan Belanja Sayur Segar & Kebijakan Privasi.',
-                                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                               ),
                             ),
@@ -317,18 +356,27 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: primary,
                               elevation: 2,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
                             ),
                             onPressed: _isLoading ? null : _handleRegister,
                             child: _isLoading
                                 ? const SizedBox(
                                     height: 22,
                                     width: 22,
-                                    child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+                                    child: CircularProgressIndicator(
+                                      color: Colors.white,
+                                      strokeWidth: 2,
+                                    ),
                                   )
                                 : const Text(
                                     'Daftar & Mulai Belanja',
-                                    style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                           ),
                         ),
@@ -339,12 +387,18 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text('Sudah punya akun? ', style: TextStyle(color: Colors.grey)),
+                              const Text(
+                                'Sudah punya akun? ',
+                                style: TextStyle(color: Colors.grey),
+                              ),
                               GestureDetector(
                                 onTap: () => Navigator.pop(context),
                                 child: const Text(
                                   'Masuk di sini',
-                                  style: TextStyle(color: primary, fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                    color: primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
@@ -387,7 +441,10 @@ class _RegisterPageState extends State<RegisterPage> {
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: Colors.grey.shade50,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 18,
+          vertical: 14,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: Colors.grey.shade300),

@@ -54,10 +54,18 @@ class _HistoryPageState extends State<HistoryPage> {
                   children: [
                     const Text(
                       'Struk Digital Belanja',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: primary),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: primary,
+                      ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.close, color: Colors.grey, size: 22),
+                      icon: const Icon(
+                        Icons.close,
+                        color: Colors.grey,
+                        size: 22,
+                      ),
                       onPressed: () => Navigator.pop(ctx),
                       visualDensity: VisualDensity.compact,
                     ),
@@ -97,22 +105,38 @@ class _HistoryPageState extends State<HistoryPage> {
                                     color: backsur.withOpacity(0.5),
                                     shape: BoxShape.circle,
                                   ),
-                                  child: const Icon(Icons.eco, color: primary, size: 28),
+                                  child: const Icon(
+                                    Icons.eco,
+                                    color: primary,
+                                    size: 28,
+                                  ),
                                 ),
                                 const SizedBox(height: 8),
                                 const Text(
                                   'VEGETABLES APP',
-                                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16, letterSpacing: 1.2, color: primary),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 16,
+                                    letterSpacing: 1.2,
+                                    color: primary,
+                                  ),
                                 ),
                                 const SizedBox(height: 2),
                                 const Text(
                                   'STRUK RESMI PEMBELIAN SAYUR SEGAR',
-                                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black54),
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black54,
+                                  ),
                                 ),
                                 const SizedBox(height: 2),
                                 const Text(
                                   'Kebun Mitra Petani Organik Jawa Tengah',
-                                  style: TextStyle(fontSize: 11, color: Colors.grey),
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                               ],
                             ),
@@ -129,7 +153,11 @@ class _HistoryPageState extends State<HistoryPage> {
                           const SizedBox(height: 4),
                           _buildReceiptRow('Metode Bayar', order.paymentMethod),
                           const SizedBox(height: 4),
-                          _buildReceiptRow('Status', order.status, isStatus: true),
+                          _buildReceiptRow(
+                            'Status',
+                            order.status,
+                            isStatus: true,
+                          ),
 
                           const SizedBox(height: 12),
                           _buildDashedLine(),
@@ -138,21 +166,35 @@ class _HistoryPageState extends State<HistoryPage> {
                           // Informasi Pengiriman
                           const Text(
                             'Alamat Pengantaran:',
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: primary),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: primary,
+                            ),
                           ),
                           const SizedBox(height: 4),
                           Text(
                             '${order.recipientName} (${order.recipientPhone})',
-                            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                            style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                           Text(
                             order.deliveryAddress,
-                            style: const TextStyle(fontSize: 12, color: Colors.black87),
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.black87,
+                            ),
                           ),
                           const SizedBox(height: 2),
                           Text(
                             'Jadwal: ${order.deliveryTime}',
-                            style: const TextStyle(fontSize: 11, color: primary, fontWeight: FontWeight.w500),
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: primary,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
 
                           const SizedBox(height: 12),
@@ -163,14 +205,27 @@ class _HistoryPageState extends State<HistoryPage> {
                           const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Nama Sayur', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
-                              Text('Subtotal', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                              Text(
+                                'Nama Sayur',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                'Subtotal',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                ),
+                              ),
                             ],
                           ),
                           const SizedBox(height: 8),
 
                           ...order.items.map((item) {
-                            final itemTotal = _parsePrice(item.product.price) * item.quantity;
+                            final itemTotal =
+                                _parsePrice(item.product.price) * item.quantity;
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 8),
                               child: Row(
@@ -178,22 +233,32 @@ class _HistoryPageState extends State<HistoryPage> {
                                 children: [
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           item.product.title,
-                                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                         Text(
                                           '${item.product.weight} • ${item.quantity} x ${item.product.price}',
-                                          style: const TextStyle(fontSize: 11, color: Colors.grey),
+                                          style: const TextStyle(
+                                            fontSize: 11,
+                                            color: Colors.grey,
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
                                   Text(
                                     _formatCurrency(itemTotal),
-                                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -205,15 +270,29 @@ class _HistoryPageState extends State<HistoryPage> {
                           const SizedBox(height: 12),
 
                           // Kalkulasi Total
-                          _buildReceiptRow('Subtotal Sayuran', _formatCurrency(order.totalAmount)),
+                          _buildReceiptRow(
+                            'Subtotal Sayuran',
+                            _formatCurrency(order.totalAmount),
+                          ),
                           const SizedBox(height: 4),
-                          _buildReceiptRow('Ongkos Kirim', 'Gratis (Rp 0)', isGreen: true),
+                          _buildReceiptRow(
+                            'Ongkos Kirim',
+                            'Gratis (Rp 0)',
+                            isGreen: true,
+                          ),
                           const SizedBox(height: 4),
-                          _buildReceiptRow('Kemasan Zero-Waste Daun', 'Gratis', isGreen: true),
+                          _buildReceiptRow(
+                            'Kemasan Zero-Waste Daun',
+                            'Gratis',
+                            isGreen: true,
+                          ),
                           const SizedBox(height: 10),
 
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 8,
+                            ),
                             decoration: BoxDecoration(
                               color: backsur.withOpacity(0.4),
                               borderRadius: BorderRadius.circular(10),
@@ -223,11 +302,19 @@ class _HistoryPageState extends State<HistoryPage> {
                               children: [
                                 const Text(
                                   'TOTAL DIBAYAR',
-                                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: primary),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 13,
+                                    color: primary,
+                                  ),
                                 ),
                                 Text(
                                   _formatCurrency(order.totalAmount),
-                                  style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 15, color: primary),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15,
+                                    color: primary,
+                                  ),
                                 ),
                               ],
                             ),
@@ -243,16 +330,26 @@ class _HistoryPageState extends State<HistoryPage> {
                               children: [
                                 Text(
                                   '*** TERIMA KASIH ***',
-                                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, letterSpacing: 1),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 1,
+                                  ),
                                 ),
                                 SizedBox(height: 4),
                                 Text(
                                   'Sayur dipetik segar langsung dari petani lokal.',
-                                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                                 Text(
                                   'Simpan struk ini sebagai bukti transaksi resmi.',
-                                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                               ],
                             ),
@@ -271,14 +368,28 @@ class _HistoryPageState extends State<HistoryPage> {
                             style: OutlinedButton.styleFrom(
                               side: const BorderSide(color: primary),
                               padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(14),
+                              ),
                             ),
-                            icon: const Icon(Icons.share_outlined, color: primary, size: 18),
-                            label: const Text('Bagikan Struk', style: TextStyle(color: primary, fontWeight: FontWeight.bold)),
+                            icon: const Icon(
+                              Icons.share_outlined,
+                              color: primary,
+                              size: 18,
+                            ),
+                            label: const Text(
+                              'Bagikan Struk',
+                              style: TextStyle(
+                                color: primary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             onPressed: () {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text('Struk belanja berhasil dibagikan!'),
+                                  content: Text(
+                                    'Struk belanja berhasil dibagikan!',
+                                  ),
                                   behavior: SnackBarBehavior.floating,
                                 ),
                               );
@@ -291,14 +402,28 @@ class _HistoryPageState extends State<HistoryPage> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: primary,
                               padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(14),
+                              ),
                             ),
-                            icon: const Icon(Icons.download_rounded, color: Colors.white, size: 18),
-                            label: const Text('Simpan Struk', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                            icon: const Icon(
+                              Icons.download_rounded,
+                              color: Colors.white,
+                              size: 18,
+                            ),
+                            label: const Text(
+                              'Simpan Struk',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             onPressed: () {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text('Struk berhasil disimpan ke perangkat Anda! 📥'),
+                                  content: Text(
+                                    'Struk berhasil disimpan ke perangkat Anda! 📥',
+                                  ),
                                   behavior: SnackBarBehavior.floating,
                                 ),
                               );
@@ -344,12 +469,20 @@ class _HistoryPageState extends State<HistoryPage> {
     );
   }
 
-  Widget _buildReceiptRow(String label, String value, {bool isStatus = false, bool isGreen = false}) {
+  Widget _buildReceiptRow(
+    String label,
+    String value, {
+    bool isStatus = false,
+    bool isGreen = false,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(fontSize: 12, color: Colors.black54)),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 12, color: Colors.black54),
+        ),
         const SizedBox(width: 8),
         Expanded(
           child: Text(
@@ -357,7 +490,9 @@ class _HistoryPageState extends State<HistoryPage> {
             textAlign: TextAlign.end,
             style: TextStyle(
               fontSize: 12,
-              fontWeight: isStatus || isGreen ? FontWeight.bold : FontWeight.w500,
+              fontWeight: isStatus || isGreen
+                  ? FontWeight.bold
+                  : FontWeight.w500,
               color: isGreen ? primary : (isStatus ? primary : Colors.black87),
             ),
           ),
@@ -377,7 +512,9 @@ class _HistoryPageState extends State<HistoryPage> {
         if (didPop) return;
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const MainNavigation(initialIndex: 0)),
+          MaterialPageRoute(
+            builder: (context) => const MainNavigation(initialIndex: 0),
+          ),
           (route) => false,
         );
       },
@@ -386,18 +523,29 @@ class _HistoryPageState extends State<HistoryPage> {
         appBar: AppBar(
           title: const Text(
             'Riwayat Pesanan Sayur',
-            style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 18),
+            style: TextStyle(
+              color: primary,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
           ),
           centerTitle: true,
           elevation: 0,
           backgroundColor: Colors.white,
           leading: canPop
               ? IconButton(
-                  icon: const Icon(Icons.arrow_back_ios_new, color: primary, size: 20),
+                  icon: const Icon(
+                    Icons.arrow_back_ios_new,
+                    color: primary,
+                    size: 20,
+                  ),
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => const MainNavigation(initialIndex: 0)),
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const MainNavigation(initialIndex: 0),
+                      ),
                       (route) => false,
                     );
                   },
@@ -422,7 +570,11 @@ class _HistoryPageState extends State<HistoryPage> {
                       const SizedBox(height: 16),
                       const Text(
                         'Belum Ada Riwayat Pesanan',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: primary),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: primary,
+                        ),
                       ),
                       const SizedBox(height: 6),
                       const Text(
@@ -483,26 +635,40 @@ class _HistoryPageState extends State<HistoryPage> {
                           color: backsur.withOpacity(0.6),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Icon(Icons.receipt_long, color: primary, size: 16),
+                        child: const Icon(
+                          Icons.receipt_long,
+                          color: primary,
+                          size: 16,
+                        ),
                       ),
                       const SizedBox(width: 8),
                       Text(
                         order.orderId,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                        ),
                       ),
                     ],
                   ),
                   const SizedBox(width: 8),
                   Flexible(
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: backsur.withOpacity(0.6),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
                         order.status,
-                        style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: primary),
+                        style: const TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: primary,
+                        ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.end,
@@ -543,13 +709,21 @@ class _HistoryPageState extends State<HistoryPage> {
                                 errorBuilder: (ctx, err, stack) => Image.asset(
                                   item.product.imagePath,
                                   fit: BoxFit.cover,
-                                  errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 20),
+                                  errorBuilder: (c, e, s) => const Icon(
+                                    Icons.eco,
+                                    color: primary,
+                                    size: 20,
+                                  ),
                                 ),
                               )
                             : Image.asset(
                                 item.product.imagePath,
                                 fit: BoxFit.cover,
-                                errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 20),
+                                errorBuilder: (c, e, s) => const Icon(
+                                  Icons.eco,
+                                  color: primary,
+                                  size: 20,
+                                ),
                               ),
                       ),
                     );
@@ -566,7 +740,11 @@ class _HistoryPageState extends State<HistoryPage> {
                       child: Center(
                         child: Text(
                           '+${order.items.length - 3}',
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: primary),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                            color: primary,
+                          ),
                         ),
                       ),
                     ),
@@ -579,14 +757,20 @@ class _HistoryPageState extends State<HistoryPage> {
                       children: [
                         Text(
                           order.items.map((i) => i.product.title).join(', '),
-                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 2),
                         Text(
                           '${order.items.fold(0, (sum, i) => sum + i.quantity)} Ikat / Item sayuran',
-                          style: const TextStyle(fontSize: 11, color: Colors.grey),
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.grey,
+                          ),
                         ),
                       ],
                     ),
@@ -606,14 +790,21 @@ class _HistoryPageState extends State<HistoryPage> {
                       children: [
                         Text(
                           'Metode: ${order.paymentMethod}',
-                          style: const TextStyle(color: Colors.grey, fontSize: 11),
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 11,
+                          ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                         const SizedBox(height: 2),
                         Text(
                           _formatCurrency(order.totalAmount),
-                          style: const TextStyle(color: primary, fontWeight: FontWeight.w800, fontSize: 15),
+                          style: const TextStyle(
+                            color: primary,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 15,
+                          ),
                         ),
                       ],
                     ),
@@ -624,13 +815,21 @@ class _HistoryPageState extends State<HistoryPage> {
                       backgroundColor: primary,
                       foregroundColor: Colors.white,
                       elevation: 0,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 8,
+                      ),
                     ),
                     icon: const Icon(Icons.receipt_long, size: 16),
                     label: const Text(
                       'Lihat Struk',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
                     ),
                     onPressed: () => _showReceiptModal(order),
                   ),

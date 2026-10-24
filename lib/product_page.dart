@@ -36,7 +36,9 @@ class _ProductPageState extends State<ProductPage> {
 
   void _addToCart(Product product) {
     final cart = AppState().cart;
-    final index = cart.indexWhere((item) => item.product.title == product.title);
+    final index = cart.indexWhere(
+      (item) => item.product.title == product.title,
+    );
 
     setState(() {
       if (index >= 0) {
@@ -67,8 +69,11 @@ class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     final filteredProducts = _allProducts.where((product) {
-      final matchCategory = _selectedCategory == 'Semua' || product.category == _selectedCategory;
-      final matchSearch = product.title.toLowerCase().contains(_searchQuery.toLowerCase());
+      final matchCategory =
+          _selectedCategory == 'Semua' || product.category == _selectedCategory;
+      final matchSearch = product.title.toLowerCase().contains(
+        _searchQuery.toLowerCase(),
+      );
       return matchCategory && matchSearch;
     }).toList();
 
@@ -80,14 +85,22 @@ class _ProductPageState extends State<ProductPage> {
         centerTitle: true,
         title: const Text(
           'Katalog Sayur Segar',
-          style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 19),
+          style: TextStyle(
+            color: primary,
+            fontWeight: FontWeight.bold,
+            fontSize: 19,
+          ),
         ),
         actions: [
           IconButton(
             icon: Badge(
               label: Text(
                 AppState().cart.length.toString(),
-                style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               isLabelVisible: AppState().cart.isNotEmpty,
               backgroundColor: Colors.red.shade600,
@@ -120,11 +133,22 @@ class _ProductPageState extends State<ProductPage> {
                 onChanged: (value) => setState(() => _searchQuery = value),
                 decoration: InputDecoration(
                   hintText: 'Cari sayuran di katalog...',
-                  hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 13),
-                  prefixIcon: const Icon(Icons.search, color: primary, size: 22),
+                  hintStyle: TextStyle(
+                    color: Colors.grey.shade400,
+                    fontSize: 13,
+                  ),
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: primary,
+                    size: 22,
+                  ),
                   suffixIcon: _searchQuery.isNotEmpty
                       ? IconButton(
-                          icon: const Icon(Icons.clear, size: 18, color: Colors.grey),
+                          icon: const Icon(
+                            Icons.clear,
+                            size: 18,
+                            color: Colors.grey,
+                          ),
                           onPressed: () {
                             _searchController.clear();
                             setState(() => _searchQuery = '');
@@ -154,7 +178,10 @@ class _ProductPageState extends State<ProductPage> {
                     onTap: () => setState(() => _selectedCategory = category),
                     borderRadius: BorderRadius.circular(20),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
                       decoration: BoxDecoration(
                         color: isSelected ? primary : Colors.grey.shade100,
                         borderRadius: BorderRadius.circular(20),
@@ -167,7 +194,9 @@ class _ProductPageState extends State<ProductPage> {
                           category,
                           style: TextStyle(
                             color: isSelected ? Colors.white : Colors.black87,
-                            fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                            fontWeight: isSelected
+                                ? FontWeight.bold
+                                : FontWeight.w500,
                             fontSize: 12,
                           ),
                         ),
@@ -191,7 +220,10 @@ class _ProductPageState extends State<ProductPage> {
                         const SizedBox(height: 12),
                         Text(
                           'Sayur "$_searchQuery" tidak ditemukan',
-                          style: const TextStyle(color: Colors.grey, fontSize: 14),
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
+                          ),
                         ),
                       ],
                     ),
@@ -199,14 +231,16 @@ class _ProductPageState extends State<ProductPage> {
                 : GridView.builder(
                     padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
                     physics: const BouncingScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.68,
-                      crossAxisSpacing: 14,
-                      mainAxisSpacing: 14,
-                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.68,
+                          crossAxisSpacing: 14,
+                          mainAxisSpacing: 14,
+                        ),
                     itemCount: filteredProducts.length,
-                    itemBuilder: (context, index) => _buildProductCard(filteredProducts[index]),
+                    itemBuilder: (context, index) =>
+                        _buildProductCard(filteredProducts[index]),
                   ),
           ),
         ],
@@ -232,7 +266,9 @@ class _ProductPageState extends State<ProductPage> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DetailPage(product: product)),
+            MaterialPageRoute(
+              builder: (context) => DetailPage(product: product),
+            ),
           ).then((_) => setState(() {}));
         },
         borderRadius: BorderRadius.circular(18),
@@ -257,29 +293,38 @@ class _ProductPageState extends State<ProductPage> {
                           ? Image.network(
                               product.imageUrl,
                               fit: BoxFit.cover,
-                              loadingBuilder: (context, child, loadingProgress) {
-                                if (loadingProgress == null) return child;
-                                return Center(
-                                  child: SizedBox(
-                                    width: 24,
-                                    height: 24,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      color: primary.withOpacity(0.6),
-                                    ),
-                                  ),
-                                );
-                              },
+                              loadingBuilder:
+                                  (context, child, loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 24,
+                                        height: 24,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          color: primary.withOpacity(0.6),
+                                        ),
+                                      ),
+                                    );
+                                  },
                               errorBuilder: (ctx, err, stack) => Image.asset(
                                 product.imagePath,
                                 fit: BoxFit.cover,
-                                errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 40),
+                                errorBuilder: (c, e, s) => const Icon(
+                                  Icons.eco,
+                                  color: primary,
+                                  size: 40,
+                                ),
                               ),
                             )
                           : Image.asset(
                               product.imagePath,
                               fit: BoxFit.cover,
-                              errorBuilder: (ctx, err, stack) => const Icon(Icons.eco, color: primary, size: 40),
+                              errorBuilder: (ctx, err, stack) => const Icon(
+                                Icons.eco,
+                                color: primary,
+                                size: 40,
+                              ),
                             ),
                     ),
                   ),
@@ -288,14 +333,21 @@ class _ProductPageState extends State<ProductPage> {
                     top: 6,
                     left: 6,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.9),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
                         product.category,
-                        style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: primary),
+                        style: const TextStyle(
+                          fontSize: 9,
+                          fontWeight: FontWeight.bold,
+                          color: primary,
+                        ),
                       ),
                     ),
                   ),
@@ -303,7 +355,10 @@ class _ProductPageState extends State<ProductPage> {
                     top: 6,
                     right: 6,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.black.withOpacity(0.6),
                         borderRadius: BorderRadius.circular(8),
@@ -315,7 +370,11 @@ class _ProductPageState extends State<ProductPage> {
                           const SizedBox(width: 2),
                           Text(
                             product.rating.toString(),
-                            style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Colors.white),
+                            style: const TextStyle(
+                              fontSize: 9,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ],
                       ),
@@ -328,7 +387,10 @@ class _ProductPageState extends State<ProductPage> {
               // Judul Produk
               Text(
                 product.title,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -378,7 +440,11 @@ class _ProductPageState extends State<ProductPage> {
                         color: primary,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Icon(Icons.add, color: Colors.white, size: 18),
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 18,
+                      ),
                     ),
                   ),
                 ],

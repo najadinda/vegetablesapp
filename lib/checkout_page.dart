@@ -42,10 +42,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
   void _processCheckout() {
     final user = AppState().currentUser;
     final now = DateTime.now();
-    final timeStr = '${now.hour.toString().padLeft(2, '0')}.${now.minute.toString().padLeft(2, '0')} WIB';
+    final timeStr =
+        '${now.hour.toString().padLeft(2, '0')}.${now.minute.toString().padLeft(2, '0')} WIB';
     final dateStr = '${now.day} Okt ${now.year}, $timeStr';
     final randomSuffix = now.millisecondsSinceEpoch.toString().substring(8);
-    final orderId = 'ORD-${now.year}${now.month.toString().padLeft(2, '0')}${now.day.toString().padLeft(2, '0')}-$randomSuffix';
+    final orderId =
+        'ORD-${now.year}${now.month.toString().padLeft(2, '0')}${now.day.toString().padLeft(2, '0')}-$randomSuffix';
 
     final total = _calculateSubtotal();
 
@@ -90,13 +92,21 @@ class _CheckoutPageState extends State<CheckoutPage> {
             const SizedBox(height: 16),
             const Text(
               'Pesanan Sayur Berhasil!',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: primary),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: primary,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
               'No. Pesanan: $orderId\nSayuran segar Anda akan dipanen pagi ini dan diantar ke alamat Anda.',
-              style: const TextStyle(color: Colors.grey, fontSize: 13, height: 1.4),
+              style: const TextStyle(
+                color: Colors.grey,
+                fontSize: 13,
+                height: 1.4,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -106,16 +116,29 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primary,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
-                icon: const Icon(Icons.receipt_long, color: Colors.white, size: 18),
-                label: const Text('Lihat Riwayat & Struk', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                icon: const Icon(
+                  Icons.receipt_long,
+                  color: Colors.white,
+                  size: 18,
+                ),
+                label: const Text(
+                  'Lihat Riwayat & Struk',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 onPressed: () {
                   Navigator.pop(ctx);
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MainNavigation(initialIndex: 2),
+                      builder: (context) =>
+                          const MainNavigation(initialIndex: 2),
                     ),
                     (route) => false,
                   );
@@ -134,7 +157,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   (route) => false,
                 );
               },
-              child: const Text('Kembali ke Beranda', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w600)),
+              child: const Text(
+                'Kembali ke Beranda',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
           ],
         ),
@@ -159,7 +188,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         title: const Text(
           'Konfirmasi Checkout Sayur',
-          style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(
+            color: primary,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -177,7 +210,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: Colors.grey.shade200),
                 boxShadow: [
-                  BoxShadow(color: Colors.black.withOpacity(0.02), blurRadius: 8, offset: const Offset(0, 3)),
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.02),
+                    blurRadius: 8,
+                    offset: const Offset(0, 3),
+                  ),
                 ],
               ),
               child: Column(
@@ -191,7 +228,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           color: backsur.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Icon(Icons.location_on, color: primary, size: 20),
+                        child: const Icon(
+                          Icons.location_on,
+                          color: primary,
+                          size: 20,
+                        ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
@@ -200,11 +241,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           children: [
                             Text(
                               user?.name ?? 'Nama Pelanggan',
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
                             ),
                             Text(
                               user?.phone ?? '0812-3456-7890',
-                              style: const TextStyle(color: Colors.grey, fontSize: 12),
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
                             ),
                           ],
                         ),
@@ -214,11 +261,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   const SizedBox(height: 10),
                   Text(
                     user?.address ?? 'Jl. Nakula Raya No. 10, Semarang',
-                    style: const TextStyle(fontSize: 13, color: Colors.black87, height: 1.3),
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.black87,
+                      height: 1.3,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: backsur.withOpacity(0.4),
                       borderRadius: BorderRadius.circular(8),
@@ -230,7 +284,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         SizedBox(width: 6),
                         Text(
                           'Jadwal Kirim: Panen Pagi (06.00 - 09.00 WIB)',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: primary),
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                            color: primary,
+                          ),
                         ),
                       ],
                     ),
@@ -241,7 +299,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
             const SizedBox(height: 20),
 
             // 2. RINCIAN SAYUR YANG DIPESAN
-            _buildSectionHeader('Sayur yang Dipesan (${widget.selectedItems.length} Jenis)'),
+            _buildSectionHeader(
+              'Sayur yang Dipesan (${widget.selectedItems.length} Jenis)',
+            ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -256,7 +316,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 separatorBuilder: (ctx, idx) => const Divider(height: 16),
                 itemBuilder: (context, index) {
                   final item = widget.selectedItems[index];
-                  final itemTotal = _parsePrice(item.product.price) * item.quantity;
+                  final itemTotal =
+                      _parsePrice(item.product.price) * item.quantity;
                   return Row(
                     children: [
                       Container(
@@ -272,16 +333,25 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               ? Image.network(
                                   item.product.imageUrl,
                                   fit: BoxFit.cover,
-                                  errorBuilder: (ctx, err, stack) => Image.asset(
-                                    item.product.imagePath,
-                                    fit: BoxFit.cover,
-                                    errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 24),
-                                  ),
+                                  errorBuilder: (ctx, err, stack) =>
+                                      Image.asset(
+                                        item.product.imagePath,
+                                        fit: BoxFit.cover,
+                                        errorBuilder: (c, e, s) => const Icon(
+                                          Icons.eco,
+                                          color: primary,
+                                          size: 24,
+                                        ),
+                                      ),
                                 )
                               : Image.asset(
                                   item.product.imagePath,
                                   fit: BoxFit.cover,
-                                  errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 24),
+                                  errorBuilder: (c, e, s) => const Icon(
+                                    Icons.eco,
+                                    color: primary,
+                                    size: 24,
+                                  ),
                                 ),
                         ),
                       ),
@@ -292,21 +362,31 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           children: [
                             Text(
                               item.product.title,
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
                             const SizedBox(height: 2),
                             Text(
                               '${item.product.weight} • ${item.quantity} x ${item.product.price}',
-                              style: const TextStyle(color: Colors.grey, fontSize: 12),
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
                             ),
                           ],
                         ),
                       ),
                       Text(
                         _formatCurrency(itemTotal),
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: primary),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                          color: primary,
+                        ),
                       ),
                     ],
                   );
@@ -363,20 +443,35 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 children: [
                   _buildSummaryRow('Subtotal Sayur', _formatCurrency(subtotal)),
                   const SizedBox(height: 8),
-                  _buildSummaryRow('Ongkos Kirim Panen Pagi', 'Gratis (Rp 0)', isHighlight: true),
+                  _buildSummaryRow(
+                    'Ongkos Kirim Panen Pagi',
+                    'Gratis (Rp 0)',
+                    isHighlight: true,
+                  ),
                   const SizedBox(height: 8),
-                  _buildSummaryRow('Kemasan Besek & Daun Organik', 'Gratis', isHighlight: true),
+                  _buildSummaryRow(
+                    'Kemasan Besek & Daun Organik',
+                    'Gratis',
+                    isHighlight: true,
+                  ),
                   const Divider(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'Total Bayar',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
                       ),
                       Text(
                         _formatCurrency(subtotal),
-                        style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 17, color: primary),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 17,
+                          color: primary,
+                        ),
                       ),
                     ],
                   ),
@@ -393,7 +488,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
           color: Colors.white,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
           boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 14, offset: const Offset(0, -4)),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 14,
+              offset: const Offset(0, -4),
+            ),
           ],
         ),
         child: SafeArea(
@@ -404,11 +503,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Total Pembayaran', style: TextStyle(color: Colors.grey, fontSize: 12)),
+                    const Text(
+                      'Total Pembayaran',
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
+                    ),
                     const SizedBox(height: 2),
                     Text(
                       _formatCurrency(subtotal),
-                      style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800, color: primary),
+                      style: const TextStyle(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w800,
+                        color: primary,
+                      ),
                     ),
                   ],
                 ),
@@ -419,14 +525,20 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primary,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     elevation: 0,
                   ),
                   onPressed: _processCheckout,
                   child: const Text(
                     'Pesan Sekarang',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
                   ),
                 ),
               ),
@@ -442,12 +554,21 @@ class _CheckoutPageState extends State<CheckoutPage> {
       padding: const EdgeInsets.only(left: 4, bottom: 8),
       child: Text(
         title,
-        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: primary),
+        style: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+          color: primary,
+        ),
       ),
     );
   }
 
-  Widget _buildPaymentTile(String title, String subtitle, IconData icon, String badge) {
+  Widget _buildPaymentTile(
+    String title,
+    String subtitle,
+    IconData icon,
+    String badge,
+  ) {
     final isSelected = _paymentMethod == title;
     return InkWell(
       onTap: () => setState(() => _paymentMethod = title),
@@ -463,20 +584,40 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 children: [
                   Row(
                     children: [
-                      Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: isSelected ? primary : Colors.black87)),
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                          color: isSelected ? primary : Colors.black87,
+                        ),
+                      ),
                       const SizedBox(width: 6),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: backsur.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        child: Text(badge, style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: primary)),
+                        child: Text(
+                          badge,
+                          style: const TextStyle(
+                            fontSize: 9,
+                            fontWeight: FontWeight.bold,
+                            color: primary,
+                          ),
+                        ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 2),
-                  Text(subtitle, style: const TextStyle(color: Colors.grey, fontSize: 11)),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(color: Colors.grey, fontSize: 11),
+                  ),
                 ],
               ),
             ),
@@ -492,11 +633,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildSummaryRow(String label, String value, {bool isHighlight = false}) {
+  Widget _buildSummaryRow(
+    String label,
+    String value, {
+    bool isHighlight = false,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: const TextStyle(fontSize: 13, color: Colors.black54)),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 13, color: Colors.black54),
+        ),
         Text(
           value,
           style: TextStyle(

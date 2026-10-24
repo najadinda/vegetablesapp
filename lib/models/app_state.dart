@@ -15,8 +15,8 @@ class UserModel {
   bool ecoPackaging;
 
   UserModel({
-    required this.name, 
-    required this.email, 
+    required this.name,
+    required this.email,
     required this.password,
     this.phone = '0812-3456-7890',
     this.address = 'Jl. Nakula Raya No. 10, Semarang',
@@ -81,7 +81,7 @@ class AppState {
       deliveryTime: '07.15 WIB (Panen Pagi)',
     ),
   ];
-  
+
   // Auth State
   UserModel? currentUser;
   List<UserModel> registeredUsers = [

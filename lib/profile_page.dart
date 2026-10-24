@@ -31,17 +31,25 @@ class _ProfilePageState extends State<ProfilePage> {
           'Keranjang belanja (${AppState().cart.length} item) dan ${user?.points ?? 0} SayurPoin Anda tetap tersimpan aman.',
           style: const TextStyle(fontSize: 14, color: Colors.black87),
         ),
-        actionsPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        actionsPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 12,
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Batal', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
+            child: const Text(
+              'Batal',
+              style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+            ),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red.shade600,
               elevation: 0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
             ),
             onPressed: () {
               Navigator.pop(ctx);
@@ -57,7 +65,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               );
             },
-            child: const Text('Ya, Keluar', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: const Text(
+              'Ya, Keluar',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
@@ -79,21 +93,51 @@ class _ProfilePageState extends State<ProfilePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Voucher Sayur Anda', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: primary)),
-                IconButton(icon: const Icon(Icons.close), onPressed: () => Navigator.pop(ctx)),
+                const Text(
+                  'Voucher Sayur Anda',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: primary,
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () => Navigator.pop(ctx),
+                ),
               ],
             ),
             const SizedBox(height: 12),
-            _buildVoucherTile('PANENPAGI', 'Gratis Ongkir Panen Pagi', 'Berlaku s/d 31 Des 2026', Icons.local_shipping),
-            _buildVoucherTile('SAYURSEGAR15', 'Diskon 15% Sayur Organik', 'Min. belanja Rp 50.000', Icons.eco),
-            _buildVoucherTile('NEWSAHABAT', 'Cashback Rp 10.000 Sayur Daun', 'Khusus member terdaftar', Icons.stars),
+            _buildVoucherTile(
+              'PANENPAGI',
+              'Gratis Ongkir Panen Pagi',
+              'Berlaku s/d 31 Des 2026',
+              Icons.local_shipping,
+            ),
+            _buildVoucherTile(
+              'SAYURSEGAR15',
+              'Diskon 15% Sayur Organik',
+              'Min. belanja Rp 50.000',
+              Icons.eco,
+            ),
+            _buildVoucherTile(
+              'NEWSAHABAT',
+              'Cashback Rp 10.000 Sayur Daun',
+              'Khusus member terdaftar',
+              Icons.stars,
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildVoucherTile(String code, String title, String subtitle, IconData icon) {
+  Widget _buildVoucherTile(
+    String code,
+    String title,
+    String subtitle,
+    IconData icon,
+  ) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(14),
@@ -106,7 +150,10 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           Container(
             padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(color: primary, borderRadius: BorderRadius.circular(10)),
+            decoration: BoxDecoration(
+              color: primary,
+              borderRadius: BorderRadius.circular(10),
+            ),
             child: Icon(icon, color: Colors.white, size: 22),
           ),
           const SizedBox(width: 14),
@@ -114,16 +161,35 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
                 const SizedBox(height: 2),
-                Text(subtitle, style: const TextStyle(color: Colors.black54, fontSize: 12)),
+                Text(
+                  subtitle,
+                  style: const TextStyle(color: Colors.black54, fontSize: 12),
+                ),
               ],
             ),
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
-            child: Text(code, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11, color: primary)),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              code,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 11,
+                color: primary,
+              ),
+            ),
           ),
         ],
       ),
@@ -133,7 +199,9 @@ class _ProfilePageState extends State<ProfilePage> {
   void _showPointsModal(UserModel user) {
     showModalBottomSheet(
       context: context,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
       builder: (ctx) => Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -144,28 +212,57 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 Icon(Icons.stars_rounded, color: Colors.amber, size: 28),
                 SizedBox(width: 8),
-                Text('SayurPoin Reward', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: primary)),
+                Text(
+                  'SayurPoin Reward',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: primary,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 8),
-            Text('Saldo Anda saat ini: ${user.points} Poin', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+            Text(
+              'Saldo Anda saat ini: ${user.points} Poin',
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 4),
-            const Text('Kumpulkan poin dari setiap belanja sayur segar untuk ditukar produk organik gratis!', style: TextStyle(color: Colors.grey, fontSize: 13)),
+            const Text(
+              'Kumpulkan poin dari setiap belanja sayur segar untuk ditukar produk organik gratis!',
+              style: TextStyle(color: Colors.grey, fontSize: 13),
+            ),
             const SizedBox(height: 16),
             ListTile(
               contentPadding: EdgeInsets.zero,
-              leading: const CircleAvatar(backgroundColor: backsur, child: Icon(Icons.eco, color: primary)),
+              leading: const CircleAvatar(
+                backgroundColor: backsur,
+                child: Icon(Icons.eco, color: primary),
+              ),
               title: const Text('100 Poin = 1 Ikat Bayam Organik'),
               subtitle: const Text('Bisa diklaim langsung di keranjang'),
               trailing: ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: primary, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: primary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.pop(ctx);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Voucher bayam berhasil diklaim ke akun Anda!'), behavior: SnackBarBehavior.floating),
+                    const SnackBar(
+                      content: Text(
+                        'Voucher bayam berhasil diklaim ke akun Anda!',
+                      ),
+                      behavior: SnackBarBehavior.floating,
+                    ),
                   );
                 },
-                child: const Text('Klaim', style: TextStyle(color: Colors.white)),
+                child: const Text(
+                  'Klaim',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
           ],
@@ -190,11 +287,25 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(color: backsur, shape: BoxShape.circle),
-                    child: const Icon(Icons.person_off_outlined, color: primary, size: 64),
+                    decoration: BoxDecoration(
+                      color: backsur,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.person_off_outlined,
+                      color: primary,
+                      size: 64,
+                    ),
                   ),
                   const SizedBox(height: 24),
-                  const Text('Belum Masuk Akun', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: primary)),
+                  const Text(
+                    'Belum Masuk Akun',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: primary,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   const Text(
                     'Silakan masuk atau daftar akun untuk melihat profil belanja sayur, voucher, dan alamat pengantaran.',
@@ -208,12 +319,26 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: primary,
                         padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        );
                       },
-                      child: const Text('Masuk Sekarang', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
+                      child: const Text(
+                        'Masuk Sekarang',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -227,7 +352,14 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        title: const Text('Profil Sayur Saya', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
+        title: const Text(
+          'Profil Sayur Saya',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: primary,
@@ -238,7 +370,9 @@ class _ProfilePageState extends State<ProfilePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const EditProfilePage()),
+                MaterialPageRoute(
+                  builder: (context) => const EditProfilePage(),
+                ),
               ).then((_) => setState(() {}));
             },
           ),
@@ -253,7 +387,9 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: const EdgeInsets.fromLTRB(24, 8, 24, 32),
               decoration: const BoxDecoration(
                 color: primary,
-                borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(32),
+                ),
               ),
               child: Column(
                 children: [
@@ -263,14 +399,23 @@ class _ProfilePageState extends State<ProfilePage> {
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white.withOpacity(0.8), width: 3),
+                          border: Border.all(
+                            color: Colors.white.withOpacity(0.8),
+                            width: 3,
+                          ),
                         ),
                         child: CircleAvatar(
                           radius: 46,
                           backgroundColor: backsur,
-                          backgroundImage: (user.profilePicture.isNotEmpty) ? AssetImage(user.profilePicture) : null,
+                          backgroundImage: (user.profilePicture.isNotEmpty)
+                              ? AssetImage(user.profilePicture)
+                              : null,
                           child: (user.profilePicture.isEmpty)
-                              ? const Icon(Icons.person, size: 46, color: primary)
+                              ? const Icon(
+                                  Icons.person,
+                                  size: 46,
+                                  color: primary,
+                                )
                               : null,
                         ),
                       ),
@@ -279,8 +424,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         right: 4,
                         child: Container(
                           padding: const EdgeInsets.all(6),
-                          decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-                          child: const Icon(Icons.eco, color: primary, size: 16),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.eco,
+                            color: primary,
+                            size: 16,
+                          ),
                         ),
                       ),
                     ],
@@ -292,12 +444,20 @@ class _ProfilePageState extends State<ProfilePage> {
                       Flexible(
                         child: Text(
                           user.name,
-                          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+                          style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const SizedBox(width: 6),
-                      const Icon(Icons.verified, color: Colors.amberAccent, size: 18),
+                      const Icon(
+                        Icons.verified,
+                        color: Colors.amberAccent,
+                        size: 18,
+                      ),
                     ],
                   ),
                   const SizedBox(height: 4),
@@ -308,7 +468,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(height: 12),
                   // Badge Membership Sayur
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(20),
@@ -317,18 +480,32 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.local_florist, color: Colors.amberAccent, size: 16),
+                        const Icon(
+                          Icons.local_florist,
+                          color: Colors.amberAccent,
+                          size: 16,
+                        ),
                         const SizedBox(width: 6),
                         Text(
                           user.membershipTier,
-                          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
                         ),
                         const SizedBox(width: 4),
-                        const Text('•', style: TextStyle(color: Colors.white70)),
+                        const Text(
+                          '•',
+                          style: TextStyle(color: Colors.white70),
+                        ),
                         const SizedBox(width: 4),
                         Text(
                           'Sejak ${user.joinDate}',
-                          style: const TextStyle(color: Colors.white70, fontSize: 11),
+                          style: const TextStyle(
+                            color: Colors.white70,
+                            fontSize: 11,
+                          ),
                         ),
                       ],
                     ),
@@ -343,7 +520,10 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 10,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
@@ -364,7 +544,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         label: 'Pesanan',
                         value: '${AppState().history.length}',
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const HistoryPage()));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HistoryPage(),
+                            ),
+                          );
                         },
                       ),
                       _buildDivider(),
@@ -390,7 +575,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         label: 'Keranjang',
                         value: '${AppState().cart.length}',
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CartPage(),
+                            ),
+                          );
                         },
                       ),
                     ],
@@ -425,18 +615,39 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             const Row(
                               children: [
-                                Icon(Icons.energy_savings_leaf, color: primary, size: 20),
+                                Icon(
+                                  Icons.energy_savings_leaf,
+                                  color: primary,
+                                  size: 20,
+                                ),
                                 SizedBox(width: 8),
                                 Text(
                                   'Level Sahabat Sayur',
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: primary),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                    color: primary,
+                                  ),
                                 ),
                               ],
                             ),
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                              decoration: BoxDecoration(color: primary, borderRadius: BorderRadius.circular(10)),
-                              child: const Text('Gold Member', style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold)),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 3,
+                              ),
+                              decoration: BoxDecoration(
+                                color: primary,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Text(
+                                'Gold Member',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -446,7 +657,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: LinearProgressIndicator(
                             value: (user.points / 500).clamp(0.1, 1.0),
                             backgroundColor: Colors.white,
-                            valueColor: const AlwaysStoppedAnimation<Color>(primary),
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                              primary,
+                            ),
                             minHeight: 8,
                           ),
                         ),
@@ -454,8 +667,21 @@ class _ProfilePageState extends State<ProfilePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('${user.points} / 500 Poin', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: primary)),
-                            const Text('Gratis Ongkir Panen Pagi Aktif ✨', style: TextStyle(fontSize: 11, color: Colors.black87)),
+                            Text(
+                              '${user.points} / 500 Poin',
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: primary,
+                              ),
+                            ),
+                            const Text(
+                              'Gratis Ongkir Panen Pagi Aktif ✨',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: Colors.black87,
+                              ),
+                            ),
                           ],
                         ),
                       ],
@@ -473,35 +699,95 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       children: [
                         ListTile(
-                          leading: const CircleAvatar(backgroundColor: Color(0xFFF1F6F0), child: Icon(Icons.location_on, color: primary)),
-                          title: const Text('Alamat Rumah / Pengantaran', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                          subtitle: Text(user.address, style: const TextStyle(fontSize: 13, color: Colors.black54)),
-                          trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey),
+                          leading: const CircleAvatar(
+                            backgroundColor: Color(0xFFF1F6F0),
+                            child: Icon(Icons.location_on, color: primary),
+                          ),
+                          title: const Text(
+                            'Alamat Rumah / Pengantaran',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
+                          subtitle: Text(
+                            user.address,
+                            style: const TextStyle(
+                              fontSize: 13,
+                              color: Colors.black54,
+                            ),
+                          ),
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 14,
+                            color: Colors.grey,
+                          ),
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const EditProfilePage()),
+                              MaterialPageRoute(
+                                builder: (context) => const EditProfilePage(),
+                              ),
                             ).then((_) => setState(() {}));
                           },
                         ),
                         const Divider(height: 1, indent: 64),
                         ListTile(
-                          leading: const CircleAvatar(backgroundColor: Color(0xFFF1F6F0), child: Icon(Icons.phone_android, color: primary)),
-                          title: const Text('Nomor Telepon Kurir', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                          subtitle: Text(user.phone, style: const TextStyle(fontSize: 13, color: Colors.black54)),
-                          trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey),
+                          leading: const CircleAvatar(
+                            backgroundColor: Color(0xFFF1F6F0),
+                            child: Icon(Icons.phone_android, color: primary),
+                          ),
+                          title: const Text(
+                            'Nomor Telepon Kurir',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
+                          subtitle: Text(
+                            user.phone,
+                            style: const TextStyle(
+                              fontSize: 13,
+                              color: Colors.black54,
+                            ),
+                          ),
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 14,
+                            color: Colors.grey,
+                          ),
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const EditProfilePage()),
+                              MaterialPageRoute(
+                                builder: (context) => const EditProfilePage(),
+                              ),
                             ).then((_) => setState(() {}));
                           },
                         ),
                         const Divider(height: 1, indent: 64),
                         const ListTile(
-                          leading: CircleAvatar(backgroundColor: Color(0xFFF1F6F0), child: Icon(Icons.access_time_filled, color: primary)),
-                          title: Text('Jadwal Panen & Kirim', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                          subtitle: Text('Panen Subuh: Pengantaran 06.00 - 09.00 WIB', style: TextStyle(fontSize: 13, color: Colors.black54)),
+                          leading: CircleAvatar(
+                            backgroundColor: Color(0xFFF1F6F0),
+                            child: Icon(
+                              Icons.access_time_filled,
+                              color: primary,
+                            ),
+                          ),
+                          title: Text(
+                            'Jadwal Panen & Kirim',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
+                          subtitle: Text(
+                            'Panen Subuh: Pengantaran 06.00 - 09.00 WIB',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.black54,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -519,9 +805,27 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       children: [
                         SwitchListTile(
-                          secondary: const CircleAvatar(backgroundColor: Color(0xFFF1F6F0), child: Icon(Icons.notifications_active_outlined, color: primary)),
-                          title: const Text('Notifikasi Panen Pagi (06:00)', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                          subtitle: const Text('Info sayur segar yang baru dipetik hari ini', style: TextStyle(fontSize: 12, color: Colors.black54)),
+                          secondary: const CircleAvatar(
+                            backgroundColor: Color(0xFFF1F6F0),
+                            child: Icon(
+                              Icons.notifications_active_outlined,
+                              color: primary,
+                            ),
+                          ),
+                          title: const Text(
+                            'Notifikasi Panen Pagi (06:00)',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
+                          subtitle: const Text(
+                            'Info sayur segar yang baru dipetik hari ini',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black54,
+                            ),
+                          ),
                           activeColor: primary,
                           value: user.morningHarvestNotif,
                           onChanged: (val) {
@@ -530,9 +834,27 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         const Divider(height: 1, indent: 64),
                         SwitchListTile(
-                          secondary: const CircleAvatar(backgroundColor: Color(0xFFF1F6F0), child: Icon(Icons.recycling_outlined, color: primary)),
-                          title: const Text('Kemasan Zero-Waste (Dedaunan)', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                          subtitle: const Text('Gunakan besek bambu & daun pisang ramah lingkungan', style: TextStyle(fontSize: 12, color: Colors.black54)),
+                          secondary: const CircleAvatar(
+                            backgroundColor: Color(0xFFF1F6F0),
+                            child: Icon(
+                              Icons.recycling_outlined,
+                              color: primary,
+                            ),
+                          ),
+                          title: const Text(
+                            'Kemasan Zero-Waste (Dedaunan)',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
+                          subtitle: const Text(
+                            'Gunakan besek bambu & daun pisang ramah lingkungan',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black54,
+                            ),
+                          ),
                           activeColor: primary,
                           value: user.ecoPackaging,
                           onChanged: (val) {
@@ -541,17 +863,47 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         const Divider(height: 1, indent: 64),
                         ListTile(
-                          leading: const CircleAvatar(backgroundColor: Color(0xFFF1F6F0), child: Icon(Icons.all_inbox_outlined, color: primary)),
-                          title: const Text('Langganan Kotak Sayur Mingguan', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                          subtitle: const Text('Paket sayur organik 3x seminggu langsung dari petani', style: TextStyle(fontSize: 12, color: Colors.black54)),
+                          leading: const CircleAvatar(
+                            backgroundColor: Color(0xFFF1F6F0),
+                            child: Icon(
+                              Icons.all_inbox_outlined,
+                              color: primary,
+                            ),
+                          ),
+                          title: const Text(
+                            'Langganan Kotak Sayur Mingguan',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
+                          subtitle: const Text(
+                            'Paket sayur organik 3x seminggu langsung dari petani',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black54,
+                            ),
+                          ),
                           trailing: const Chip(
-                            label: Text('Aktif', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.bold)),
+                            label: Text(
+                              'Aktif',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             backgroundColor: secondary,
                             padding: EdgeInsets.zero,
                           ),
                           onTap: () {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Paket Sayur Mingguan Anda aktif untuk jadwal kirim Selasa & Jumat!'), behavior: SnackBarBehavior.floating),
+                              const SnackBar(
+                                content: Text(
+                                  'Paket Sayur Mingguan Anda aktif untuk jadwal kirim Selasa & Jumat!',
+                                ),
+                                behavior: SnackBarBehavior.floating,
+                              ),
                             );
                           },
                         ),
@@ -569,12 +921,17 @@ class _ProfilePageState extends State<ProfilePage> {
                         foregroundColor: Colors.red.shade700,
                         side: BorderSide(color: Colors.red.shade200),
                         backgroundColor: Colors.red.shade50.withOpacity(0.6),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
                       ),
                       icon: const Icon(Icons.logout, size: 20),
                       label: const Text(
                         'Keluar Akun (Logout)',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
                       ),
                       onPressed: _handleLogout,
                     ),
@@ -594,7 +951,11 @@ class _ProfilePageState extends State<ProfilePage> {
       padding: const EdgeInsets.only(left: 4, bottom: 8),
       child: Text(
         title,
-        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: primary),
+        style: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+          color: primary,
+        ),
       ),
     );
   }
@@ -615,9 +976,15 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Icon(icon, color: color, size: 24),
             const SizedBox(height: 6),
-            Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+            Text(
+              value,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+            ),
             const SizedBox(height: 2),
-            Text(label, style: const TextStyle(color: Colors.grey, fontSize: 11)),
+            Text(
+              label,
+              style: const TextStyle(color: Colors.grey, fontSize: 11),
+            ),
           ],
         ),
       ),
@@ -625,10 +992,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildDivider() {
-    return Container(
-      height: 32,
-      width: 1,
-      color: Colors.grey.shade200,
-    );
+    return Container(height: 32, width: 1, color: Colors.grey.shade200);
   }
 }

@@ -61,13 +61,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const Icon(Icons.check_circle, color: Colors.white, size: 20),
               const SizedBox(width: 10),
               Expanded(
-                child: Text('Profil & alamat pengantaran berhasil diperbarui! 🌿'),
+                child: Text(
+                  'Profil & alamat pengantaran berhasil diperbarui! 🌿',
+                ),
               ),
             ],
           ),
           backgroundColor: primary,
           behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
         ),
       );
       Navigator.pop(context);
@@ -91,9 +95,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
               children: [
                 const Text(
                   'Foto Profil Pengguna',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: primary),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: primary,
+                  ),
                 ),
-                IconButton(icon: const Icon(Icons.close), onPressed: () => Navigator.pop(ctx)),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () => Navigator.pop(ctx),
+                ),
               ],
             ),
             const SizedBox(height: 8),
@@ -105,11 +116,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
             ListTile(
               leading: Container(
                 padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(color: backsur.withOpacity(0.5), shape: BoxShape.circle),
+                decoration: BoxDecoration(
+                  color: backsur.withOpacity(0.5),
+                  shape: BoxShape.circle,
+                ),
                 child: const Icon(Icons.photo_library_outlined, color: primary),
               ),
-              title: const Text('Pilih dari Galeri', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
-              subtitle: const Text('Gunakan foto dari penyimpanan ponsel', style: TextStyle(fontSize: 12, color: Colors.grey)),
+              title: const Text(
+                'Pilih dari Galeri',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+              ),
+              subtitle: const Text(
+                'Gunakan foto dari penyimpanan ponsel',
+                style: TextStyle(fontSize: 12, color: Colors.grey),
+              ),
               onTap: () {
                 Navigator.pop(ctx);
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -123,11 +143,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
             ListTile(
               leading: Container(
                 padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(color: backsur.withOpacity(0.5), shape: BoxShape.circle),
+                decoration: BoxDecoration(
+                  color: backsur.withOpacity(0.5),
+                  shape: BoxShape.circle,
+                ),
                 child: const Icon(Icons.camera_alt_outlined, color: primary),
               ),
-              title: const Text('Ambil Foto Baru', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
-              subtitle: const Text('Gunakan kamera langsung', style: TextStyle(fontSize: 12, color: Colors.grey)),
+              title: const Text(
+                'Ambil Foto Baru',
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+              ),
+              subtitle: const Text(
+                'Gunakan kamera langsung',
+                style: TextStyle(fontSize: 12, color: Colors.grey),
+              ),
               onTap: () {
                 Navigator.pop(ctx);
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -161,14 +190,22 @@ class _EditProfilePageState extends State<EditProfilePage> {
         ),
         title: const Text(
           'Edit Profil Akun',
-          style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(
+            color: primary,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
         ),
         actions: [
           TextButton(
             onPressed: _saveProfile,
             child: const Text(
               'Simpan',
-              style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 15),
+              style: TextStyle(
+                color: primary,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
             ),
           ),
           const SizedBox(width: 8),
@@ -192,16 +229,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border: Border.all(color: accent.withOpacity(0.5), width: 3),
+                            border: Border.all(
+                              color: accent.withOpacity(0.5),
+                              width: 3,
+                            ),
                           ),
                           child: CircleAvatar(
                             radius: 46,
                             backgroundColor: backsur,
-                            backgroundImage: (user?.profilePicture != null && user!.profilePicture.isNotEmpty)
+                            backgroundImage:
+                                (user?.profilePicture != null &&
+                                    user!.profilePicture.isNotEmpty)
                                 ? AssetImage(user!.profilePicture)
                                 : null,
-                            child: (user?.profilePicture == null || user!.profilePicture.isEmpty)
-                                ? const Icon(Icons.person, size: 48, color: primary)
+                            child:
+                                (user?.profilePicture == null ||
+                                    user!.profilePicture.isEmpty)
+                                ? const Icon(
+                                    Icons.person,
+                                    size: 48,
+                                    color: primary,
+                                  )
                                 : null,
                           ),
                         ),
@@ -216,7 +264,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               decoration: BoxDecoration(
                                 color: primary,
                                 shape: BoxShape.circle,
-                                border: Border.all(color: Colors.white, width: 2),
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 2,
+                                ),
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.black.withOpacity(0.15),
@@ -225,7 +276,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                   ),
                                 ],
                               ),
-                              child: const Icon(Icons.camera_alt, color: Colors.white, size: 16),
+                              child: const Icon(
+                                Icons.camera_alt,
+                                color: Colors.white,
+                                size: 16,
+                              ),
                             ),
                           ),
                         ),
@@ -234,7 +289,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     const SizedBox(height: 12),
                     // Badge Membership Sayur
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 5,
+                      ),
                       decoration: BoxDecoration(
                         color: backsur.withOpacity(0.6),
                         borderRadius: BorderRadius.circular(20),
@@ -247,14 +305,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           const SizedBox(width: 6),
                           Text(
                             membership,
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: primary),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: primary,
+                            ),
                           ),
                           const SizedBox(width: 4),
                           const Text('•', style: TextStyle(color: Colors.grey)),
                           const SizedBox(width: 4),
                           Text(
                             'Sejak $joinDate',
-                            style: const TextStyle(fontSize: 11, color: Colors.black54),
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: Colors.black54,
+                            ),
                           ),
                         ],
                       ),
@@ -262,7 +327,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     const SizedBox(height: 6),
                     Text(
                       'Ketuk ikon kamera untuk mengubah foto avatar',
-                      style: TextStyle(fontSize: 11, color: Colors.grey.shade500),
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Colors.grey.shade500,
+                      ),
                     ),
                   ],
                 ),
@@ -271,7 +339,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const SizedBox(height: 24),
 
               // 2. KARTU SEKSI 1: DATA PRIBADI & AKUN
-              _buildSectionTitle('Informasi Pribadi & Kontak', Icons.person_outline),
+              _buildSectionTitle(
+                'Informasi Pribadi & Kontak',
+                Icons.person_outline,
+              ),
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
@@ -324,7 +395,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       hint: '081234567890',
                       icon: Icons.phone_android_outlined,
                       keyboardType: TextInputType.phone,
-                      helperText: 'Kurir panen akan menghubungi nomor ini saat pengantaran sayur',
+                      helperText:
+                          'Kurir panen akan menghubungi nomor ini saat pengantaran sayur',
                       validator: (val) {
                         if (val == null || val.trim().isEmpty) return 'Nomor HP tidak boleh kosong';
                         if (val.trim().length < 9) return 'Nomor HP minimal 9 digit';
@@ -338,7 +410,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const SizedBox(height: 20),
 
               // 3. KARTU SEKSI 2: LOGISTIK PENGANTARAN SAYUR SEGAR (Spesifik Vegetables App)
-              _buildSectionTitle('Alamat Pengantaran Sayur', Icons.local_shipping_outlined),
+              _buildSectionTitle(
+                'Alamat Pengantaran Sayur',
+                Icons.local_shipping_outlined,
+              ),
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
@@ -359,7 +434,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     _buildInputField(
                       controller: _addressController,
                       label: 'Alamat Lengkap Rumah / Kantor',
-                      hint: 'Nama jalan, nomor rumah, RT/RW, kelurahan, kecamatan',
+                      hint:
+                          'Nama jalan, nomor rumah, RT/RW, kelurahan, kecamatan',
                       icon: Icons.location_on_outlined,
                       maxLines: 3,
                       validator: (val) {
@@ -370,7 +446,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     const SizedBox(height: 12),
                     // Banner Jadwal Panen Pagi
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 10,
+                      ),
                       decoration: BoxDecoration(
                         color: backsur.withOpacity(0.4),
                         borderRadius: BorderRadius.circular(12),
@@ -378,12 +457,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       ),
                       child: const Row(
                         children: [
-                          Icon(Icons.access_time_filled, color: primary, size: 18),
+                          Icon(
+                            Icons.access_time_filled,
+                            color: primary,
+                            size: 18,
+                          ),
                           SizedBox(width: 8),
                           Expanded(
                             child: Text(
                               'Pengantaran sayur segar dilakukan pukul 06.00 - 09.00 WIB langsung setelah panen subuh.',
-                              style: TextStyle(fontSize: 11, color: primary, fontWeight: FontWeight.w600, height: 1.3),
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: primary,
+                                fontWeight: FontWeight.w600,
+                                height: 1.3,
+                              ),
                             ),
                           ),
                         ],
@@ -419,11 +507,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   obscureText: _obscurePassword,
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                      _obscurePassword
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
                       color: Colors.grey,
                       size: 20,
                     ),
-                    onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                    onPressed: () =>
+                        setState(() => _obscurePassword = !_obscurePassword),
                   ),
                   validator: (val) {
                     if (val == null || val.isEmpty) return 'Kata sandi tidak boleh kosong';
@@ -443,12 +534,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primary,
                     elevation: 1,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                   ),
                   icon: const Icon(Icons.check, color: Colors.white, size: 20),
                   label: const Text(
                     'Simpan Perubahan Profil',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
                   ),
                   onPressed: _saveProfile,
                 ),
@@ -471,7 +568,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
           const SizedBox(width: 6),
           Text(
             title,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: primary),
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: primary,
+            ),
           ),
         ],
       ),
@@ -508,7 +609,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
             suffixIcon: suffixIcon,
             filled: true,
             fillColor: Colors.grey.shade50,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 14,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
               borderSide: BorderSide(color: Colors.grey.shade300),

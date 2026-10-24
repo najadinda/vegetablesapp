@@ -64,7 +64,10 @@ class _CartPageState extends State<CartPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Hapus Sayur?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        title: const Text(
+          'Hapus Sayur?',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
         content: Text('Keluarkan "$title" dari keranjang belanja Anda?'),
         actions: [
           TextButton(
@@ -75,7 +78,9 @@ class _CartPageState extends State<CartPage> {
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red.shade600,
               elevation: 0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             onPressed: () {
               Navigator.pop(ctx);
@@ -90,7 +95,13 @@ class _CartPageState extends State<CartPage> {
                 ),
               );
             },
-            child: const Text('Hapus', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: const Text(
+              'Hapus',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
@@ -102,7 +113,10 @@ class _CartPageState extends State<CartPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Kosongkan Keranjang?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        title: const Text(
+          'Kosongkan Keranjang?',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
         content: const Text('Semua sayuran di keranjang akan dihapus.'),
         actions: [
           TextButton(
@@ -113,7 +127,9 @@ class _CartPageState extends State<CartPage> {
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red.shade600,
               elevation: 0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             onPressed: () {
               Navigator.pop(ctx);
@@ -121,7 +137,13 @@ class _CartPageState extends State<CartPage> {
                 AppState().cart.clear();
               });
             },
-            child: const Text('Kosongkan', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: const Text(
+              'Kosongkan',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
@@ -133,7 +155,8 @@ class _CartPageState extends State<CartPage> {
     final cart = AppState().cart;
     final selectedItems = cart.where((i) => i.isSelected).toList();
     final selectedCount = selectedItems.fold(0, (sum, i) => sum + i.quantity);
-    final userAddress = AppState().currentUser?.address ?? 'Semarang, Jawa Tengah';
+    final userAddress =
+        AppState().currentUser?.address ?? 'Semarang, Jawa Tengah';
 
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
@@ -147,7 +170,11 @@ class _CartPageState extends State<CartPage> {
         ),
         title: const Text(
           'Keranjang Belanja Sayur',
-          style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(
+            color: primary,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
         ),
         actions: [
           if (cart.isNotEmpty)
@@ -176,13 +203,21 @@ class _CartPageState extends State<CartPage> {
                     const SizedBox(height: 20),
                     const Text(
                       'Keranjang Masih Kosong',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: primary),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: primary,
+                      ),
                     ),
                     const SizedBox(height: 8),
                     const Text(
                       'Yuk isi keranjangmu dengan aneka sayuran organik segar yang baru dipetik hari ini!',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.grey, fontSize: 13, height: 1.4),
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 13,
+                        height: 1.4,
+                      ),
                     ),
                     const SizedBox(height: 24),
                     SizedBox(
@@ -190,13 +225,22 @@ class _CartPageState extends State<CartPage> {
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: primary,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                           padding: const EdgeInsets.symmetric(horizontal: 24),
                         ),
-                        icon: const Icon(Icons.storefront, color: Colors.white, size: 18),
+                        icon: const Icon(
+                          Icons.storefront,
+                          color: Colors.white,
+                          size: 18,
+                        ),
                         label: const Text(
                           'Mulai Belanja Sayur',
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         onPressed: () => Navigator.pop(context),
                       ),
@@ -210,7 +254,10 @@ class _CartPageState extends State<CartPage> {
                 // Info Alamat Pengiriman Singkat
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
                   color: backsur.withOpacity(0.35),
                   child: Row(
                     children: [
@@ -218,12 +265,19 @@ class _CartPageState extends State<CartPage> {
                       const SizedBox(width: 6),
                       const Text(
                         'Kirim ke: ',
-                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: primary),
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: primary,
+                        ),
                       ),
                       Expanded(
                         child: Text(
                           userAddress,
-                          style: const TextStyle(fontSize: 12, color: Colors.black87),
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.black87,
+                          ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -235,24 +289,36 @@ class _CartPageState extends State<CartPage> {
                 // Bar Pilih Semua
                 Container(
                   color: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 4,
+                  ),
                   child: Row(
                     children: [
                       Checkbox(
                         value: _isAllSelected,
                         activeColor: primary,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
                         onChanged: _toggleSelectAll,
                       ),
                       Text(
                         'Pilih Semua (${selectedItems.length}/${cart.length} Jenis Sayur)',
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: primary),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13,
+                          color: primary,
+                        ),
                       ),
                       const Spacer(),
                       if (selectedItems.isNotEmpty)
                         Text(
                           '$selectedCount Item Dipilih',
-                          style: const TextStyle(fontSize: 12, color: Colors.grey),
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
                         ),
                     ],
                   ),
@@ -281,7 +347,9 @@ class _CartPageState extends State<CartPage> {
               padding: const EdgeInsets.fromLTRB(20, 14, 20, 20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.06),
@@ -323,7 +391,9 @@ class _CartPageState extends State<CartPage> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: primary,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                           padding: const EdgeInsets.symmetric(horizontal: 24),
                           elevation: 0,
                         ),
@@ -331,7 +401,9 @@ class _CartPageState extends State<CartPage> {
                             ? () {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                    content: Text('Pilih minimal 1 sayur untuk checkout'),
+                                    content: Text(
+                                      'Pilih minimal 1 sayur untuk checkout',
+                                    ),
                                     duration: Duration(seconds: 1),
                                     behavior: SnackBarBehavior.floating,
                                   ),
@@ -341,7 +413,9 @@ class _CartPageState extends State<CartPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => CheckoutPage(selectedItems: selectedItems),
+                                    builder: (context) => CheckoutPage(
+                                      selectedItems: selectedItems,
+                                    ),
                                   ),
                                 ).then((_) => setState(() {}));
                               },
@@ -372,7 +446,9 @@ class _CartPageState extends State<CartPage> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: item.isSelected ? primary.withOpacity(0.5) : Colors.grey.shade200,
+          color: item.isSelected
+              ? primary.withOpacity(0.5)
+              : Colors.grey.shade200,
           width: item.isSelected ? 1.5 : 1,
         ),
         boxShadow: [
@@ -390,7 +466,9 @@ class _CartPageState extends State<CartPage> {
           Checkbox(
             value: item.isSelected,
             activeColor: primary,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5),
+            ),
             onChanged: (val) {
               setState(() => item.isSelected = val ?? false);
             },
@@ -413,13 +491,15 @@ class _CartPageState extends State<CartPage> {
                       errorBuilder: (ctx, err, stack) => Image.asset(
                         item.product.imagePath,
                         fit: BoxFit.cover,
-                        errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 28),
+                        errorBuilder: (c, e, s) =>
+                            const Icon(Icons.eco, color: primary, size: 28),
                       ),
                     )
                   : Image.asset(
                       item.product.imagePath,
                       fit: BoxFit.cover,
-                      errorBuilder: (ctx, err, stack) => const Icon(Icons.eco, color: primary, size: 28),
+                      errorBuilder: (ctx, err, stack) =>
+                          const Icon(Icons.eco, color: primary, size: 28),
                     ),
             ),
           ),
@@ -436,16 +516,24 @@ class _CartPageState extends State<CartPage> {
                     Expanded(
                       child: Text(
                         item.product.title,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.close, size: 16, color: Colors.grey),
+                      icon: const Icon(
+                        Icons.close,
+                        size: 16,
+                        color: Colors.grey,
+                      ),
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
-                      onPressed: () => _confirmDeleteItem(index, item.product.title),
+                      onPressed: () =>
+                          _confirmDeleteItem(index, item.product.title),
                     ),
                   ],
                 ),
@@ -462,7 +550,11 @@ class _CartPageState extends State<CartPage> {
                   children: [
                     Text(
                       item.product.price,
-                      style: const TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 14),
+                      style: const TextStyle(
+                        color: primary,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
                     ),
                     // Counter Quantity
                     Container(
@@ -477,22 +569,35 @@ class _CartPageState extends State<CartPage> {
                             onTap: () => _decreaseQuantity(item, index),
                             borderRadius: BorderRadius.circular(10),
                             child: const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                              child: Icon(Icons.remove, size: 16, color: primary),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              child: Icon(
+                                Icons.remove,
+                                size: 16,
+                                color: primary,
+                              ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 8),
                             child: Text(
                               '${item.quantity}',
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
                             ),
                           ),
                           InkWell(
                             onTap: () => _increaseQuantity(item),
                             borderRadius: BorderRadius.circular(10),
                             child: const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
                               child: Icon(Icons.add, size: 16, color: primary),
                             ),
                           ),

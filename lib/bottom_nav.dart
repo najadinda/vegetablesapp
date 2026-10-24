@@ -34,7 +34,7 @@ class _MainNavigationState extends State<MainNavigation> {
     // Mendapatkan lebar layar untuk kalkulasi jarak geser animasi
     final screenWidth = MediaQuery.of(context).size.width;
     // Karena ada 4 menu, kita bagi layar menjadi 4 area yang sama besar
-    final itemWidth = screenWidth / 4; 
+    final itemWidth = screenWidth / 4;
 
     return PopScope(
       canPop: _currentIndex == 0,
@@ -46,50 +46,54 @@ class _MainNavigationState extends State<MainNavigation> {
       },
       child: Scaffold(
         body: _pages[_currentIndex],
-      bottomNavigationBar: Container(
-        height: 80,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.15),
-              blurRadius: 20,
-              offset: const Offset(0, -5),
-            ),
-          ],
-        ),
-        child: Stack(
-          children: [
-            // 1. INDIKATOR BACKGROUND YANG BISA MELUNCUR (SLIDING)
-            AnimatedPositioned(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOutCubic, // Gaya animasi memantul halus
-              // Kalkulasi matematika agar indikator hijau pas di tengah ikon yang diklik
-              left: (_currentIndex * itemWidth) + (itemWidth / 2) - 30, // 30 adalah setengah dari lebar kotak (60)
-              top: 15,
-              child: Container(
-                width: 60,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: primary.withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(20),
+        bottomNavigationBar: Container(
+          height: 80,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.15),
+                blurRadius: 20,
+                offset: const Offset(0, -5),
+              ),
+            ],
+          ),
+          child: Stack(
+            children: [
+              // 1. INDIKATOR BACKGROUND YANG BISA MELUNCUR (SLIDING)
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOutCubic, // Gaya animasi memantul halus
+                // Kalkulasi matematika agar indikator hijau pas di tengah ikon yang diklik
+                left:
+                    (_currentIndex * itemWidth) +
+                    (itemWidth / 2) -
+                    30, // 30 adalah setengah dari lebar kotak (60)
+                top: 15,
+                child: Container(
+                  width: 60,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: primary.withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                 ),
               ),
-            ),
-            
-            // 2. KUMPULAN IKON NAVIGASI DI ATAS INDIKATOR
-            Row(
-              children: [
-                _buildNavItem(Icons.home_filled, 0, itemWidth),
-                _buildNavItem(Icons.storefront_outlined, 1, itemWidth),
-                _buildNavItem(Icons.history, 2, itemWidth),
-                _buildNavItem(Icons.person_outline, 3, itemWidth),
-              ],
-            ),
-          ],
+
+              // 2. KUMPULAN IKON NAVIGASI DI ATAS INDIKATOR
+              Row(
+                children: [
+                  _buildNavItem(Icons.home_filled, 0, itemWidth),
+                  _buildNavItem(Icons.storefront_outlined, 1, itemWidth),
+                  _buildNavItem(Icons.history, 2, itemWidth),
+                  _buildNavItem(Icons.person_outline, 3, itemWidth),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 
   // Fungsi pembuat tombol ikon

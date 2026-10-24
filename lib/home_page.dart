@@ -21,7 +21,9 @@ class _HomePageState extends State<HomePage> {
 
   void _addToCart(Product product) {
     final cart = AppState().cart;
-    final index = cart.indexWhere((item) => item.product.title == product.title);
+    final index = cart.indexWhere(
+      (item) => item.product.title == product.title,
+    );
 
     setState(() {
       if (index >= 0) {
@@ -71,11 +73,18 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(width: 8),
                     Text(
                       'Alamat Pengantaran Sayur',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: primary),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: primary,
+                      ),
                     ),
                   ],
                 ),
-                IconButton(icon: const Icon(Icons.close), onPressed: () => Navigator.pop(ctx)),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () => Navigator.pop(ctx),
+                ),
               ],
             ),
             const SizedBox(height: 12),
@@ -95,28 +104,46 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 6),
                       Text(
                         user?.name ?? 'Nama Pengguna',
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
                       ),
                       const Spacer(),
                       Text(
                         user?.phone ?? '0812-3456-7890',
-                        style: const TextStyle(color: Colors.black54, fontSize: 12),
+                        style: const TextStyle(
+                          color: Colors.black54,
+                          fontSize: 12,
+                        ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
                   Text(
                     user?.address ?? 'Semarang, Jawa Tengah',
-                    style: const TextStyle(fontSize: 13, height: 1.4, color: Colors.black87),
+                    style: const TextStyle(
+                      fontSize: 13,
+                      height: 1.4,
+                      color: Colors.black87,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   const Row(
                     children: [
-                      Icon(Icons.access_time_outlined, size: 14, color: primary),
+                      Icon(
+                        Icons.access_time_outlined,
+                        size: 14,
+                        color: primary,
+                      ),
                       SizedBox(width: 4),
                       Text(
                         'Jadwal kirim panen: 06.00 - 09.00 WIB',
-                        style: TextStyle(fontSize: 11, color: primary, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: primary,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ],
                   ),
@@ -130,18 +157,25 @@ class _HomePageState extends State<HomePage> {
               child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primary,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
                 icon: const Icon(Icons.edit, color: Colors.white, size: 18),
                 label: const Text(
                   'Ubah Alamat di Profil',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 onPressed: () {
                   Navigator.pop(ctx);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const EditProfilePage()),
+                    MaterialPageRoute(
+                      builder: (context) => const EditProfilePage(),
+                    ),
                   ).then((_) => setState(() {}));
                 },
               ),
@@ -174,7 +208,8 @@ class _HomePageState extends State<HomePage> {
                     CircleAvatar(
                       radius: 22,
                       backgroundColor: backsur,
-                      backgroundImage: (user != null && user.profilePicture.isNotEmpty)
+                      backgroundImage:
+                          (user != null && user.profilePicture.isNotEmpty)
                           ? AssetImage(user.profilePicture)
                           : null,
                       child: (user == null || user.profilePicture.isEmpty)
@@ -209,7 +244,9 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const CartPage()),
+                          MaterialPageRoute(
+                            builder: (context) => const CartPage(),
+                          ),
                         ).then((_) => setState(() {}));
                       },
                       borderRadius: BorderRadius.circular(12),
@@ -223,11 +260,19 @@ class _HomePageState extends State<HomePage> {
                         child: Badge(
                           label: Text(
                             AppState().cart.length.toString(),
-                            style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           isLabelVisible: AppState().cart.isNotEmpty,
                           backgroundColor: Colors.red.shade600,
-                          child: const Icon(Icons.shopping_basket_outlined, color: primary, size: 22),
+                          child: const Icon(
+                            Icons.shopping_basket_outlined,
+                            color: primary,
+                            size: 22,
+                          ),
                         ),
                       ),
                     ),
@@ -242,7 +287,10 @@ class _HomePageState extends State<HomePage> {
                   onTap: _showAddressModal,
                   borderRadius: BorderRadius.circular(14),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 10,
+                    ),
                     decoration: BoxDecoration(
                       color: backsur.withOpacity(0.35),
                       borderRadius: BorderRadius.circular(14),
@@ -254,7 +302,11 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(width: 8),
                         const Text(
                           'Dikirim ke: ',
-                          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: primary),
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: primary,
+                          ),
                         ),
                         Expanded(
                           child: Text(
@@ -269,7 +321,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         const SizedBox(width: 4),
-                        const Icon(Icons.keyboard_arrow_down, color: primary, size: 18),
+                        const Icon(
+                          Icons.keyboard_arrow_down,
+                          color: primary,
+                          size: 18,
+                        ),
                       ],
                     ),
                   ),
@@ -302,14 +358,21 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 4,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.22),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: const Text(
                               'Panen Dini Hari • 100% Segar',
-                              style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -325,7 +388,10 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(height: 6),
                           const Text(
                             'Bebas pestisida, siap dimasak untuk keluarga.',
-                            style: TextStyle(color: Colors.white70, fontSize: 11),
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 11,
+                            ),
                           ),
                         ],
                       ),
@@ -363,16 +429,26 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const ProductPage()),
+                          MaterialPageRoute(
+                            builder: (context) => const ProductPage(),
+                          ),
                         );
                       },
                       child: const Row(
                         children: [
                           Text(
                             'Katalog',
-                            style: TextStyle(color: primary, fontWeight: FontWeight.bold, fontSize: 13),
+                            style: TextStyle(
+                              color: primary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            ),
                           ),
-                          Icon(Icons.arrow_forward_ios, color: primary, size: 12),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: primary,
+                            size: 12,
+                          ),
                         ],
                       ),
                     ),
@@ -410,11 +486,27 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildFeatureItem('🌱', '100% Organik', 'Tanpa pestisida'),
-                      Container(height: 30, width: 1, color: Colors.grey.shade300),
+                      _buildFeatureItem(
+                        '🌱',
+                        '100% Organik',
+                        'Tanpa pestisida',
+                      ),
+                      Container(
+                        height: 30,
+                        width: 1,
+                        color: Colors.grey.shade300,
+                      ),
                       _buildFeatureItem('🚚', 'Panen Subuh', 'Kirim 06-09 WIB'),
-                      Container(height: 30, width: 1, color: Colors.grey.shade300),
-                      _buildFeatureItem('✨', 'Garansi Segar', 'Ganti baru 100%'),
+                      Container(
+                        height: 30,
+                        width: 1,
+                        color: Colors.grey.shade300,
+                      ),
+                      _buildFeatureItem(
+                        '✨',
+                        'Garansi Segar',
+                        'Ganti baru 100%',
+                      ),
                     ],
                   ),
                 ),
@@ -446,7 +538,9 @@ class _HomePageState extends State<HomePage> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DetailPage(product: product)),
+            MaterialPageRoute(
+              builder: (context) => DetailPage(product: product),
+            ),
           ).then((_) => setState(() {}));
         },
         borderRadius: BorderRadius.circular(18),
@@ -474,13 +568,21 @@ class _HomePageState extends State<HomePage> {
                               errorBuilder: (ctx, err, stack) => Image.asset(
                                 product.imagePath,
                                 fit: BoxFit.cover,
-                                errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 40),
+                                errorBuilder: (c, e, s) => const Icon(
+                                  Icons.eco,
+                                  color: primary,
+                                  size: 40,
+                                ),
                               ),
                             )
                           : Image.asset(
                               product.imagePath,
                               fit: BoxFit.cover,
-                              errorBuilder: (ctx, err, stack) => const Icon(Icons.eco, color: primary, size: 40),
+                              errorBuilder: (ctx, err, stack) => const Icon(
+                                Icons.eco,
+                                color: primary,
+                                size: 40,
+                              ),
                             ),
                     ),
                   ),
@@ -489,7 +591,10 @@ class _HomePageState extends State<HomePage> {
                     top: 6,
                     left: 6,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.92),
                         borderRadius: BorderRadius.circular(8),
@@ -501,7 +606,11 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(width: 2),
                           Text(
                             product.rating.toString(),
-                            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black87),
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87,
+                            ),
                           ),
                         ],
                       ),
@@ -513,14 +622,21 @@ class _HomePageState extends State<HomePage> {
                       bottom: 6,
                       left: 6,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: primary.withOpacity(0.9),
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
                           product.badgeText,
-                          style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Colors.white),
+                          style: const TextStyle(
+                            fontSize: 9,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -531,7 +647,10 @@ class _HomePageState extends State<HomePage> {
               // Judul Sayur
               Text(
                 product.title,
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -581,7 +700,11 @@ class _HomePageState extends State<HomePage> {
                         color: primary,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Icon(Icons.add, color: Colors.white, size: 18),
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 18,
+                      ),
                     ),
                   ),
                 ],
@@ -598,9 +721,19 @@ class _HomePageState extends State<HomePage> {
       children: [
         Text(emoji, style: const TextStyle(fontSize: 20)),
         const SizedBox(height: 4),
-        Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11, color: primary)),
+        Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 11,
+            color: primary,
+          ),
+        ),
         const SizedBox(height: 1),
-        Text(subtitle, style: const TextStyle(fontSize: 10, color: Colors.grey)),
+        Text(
+          subtitle,
+          style: const TextStyle(fontSize: 10, color: Colors.grey),
+        ),
       ],
     );
   }
