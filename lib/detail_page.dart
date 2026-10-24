@@ -56,9 +56,21 @@ class _DetailPageState extends State<DetailPage> {
               width: double.infinity,
               height: 300,
               decoration: const BoxDecoration(color: backsur),
-              child: Image.asset(widget.product.imagePath, fit: BoxFit.cover,
-                errorBuilder: (ctx, err, stack) => const Icon(Icons.image, color: Colors.grey, size: 80),
-              ),
+              child: widget.product.imageUrl.isNotEmpty
+                  ? Image.network(
+                      widget.product.imageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (ctx, err, stack) => Image.asset(
+                        widget.product.imagePath,
+                        fit: BoxFit.cover,
+                        errorBuilder: (c, e, s) => const Icon(Icons.eco, color: primary, size: 80),
+                      ),
+                    )
+                  : Image.asset(
+                      widget.product.imagePath,
+                      fit: BoxFit.cover,
+                      errorBuilder: (ctx, err, stack) => const Icon(Icons.eco, color: primary, size: 80),
+                    ),
             ),
             Padding(
               padding: const EdgeInsets.all(24.0),
